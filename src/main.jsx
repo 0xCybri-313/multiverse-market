@@ -14,6 +14,7 @@ import { Home, About, Contact, Products, Cart } from "./pages";
 
 import "./index.css";
 import App from "./App.jsx";
+import { DataProvider } from "./context/DataContext.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -29,8 +30,10 @@ const router = createBrowserRouter(
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <ClerkProvider>
-      <RouterProvider router={router} />
-    </ClerkProvider>
+    <DataProvider>
+      <ClerkProvider>
+        <RouterProvider router={router} />
+      </ClerkProvider>
+    </DataProvider>
   </StrictMode>,
 );
