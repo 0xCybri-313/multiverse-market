@@ -13,8 +13,8 @@ function Navbar({ location, getLocation, openDropDown, setOpenDropDown }) {
   };
 
   return (
-    <div className="h-16 w-screen bg-white shadow-2xl">
-      <div className="relative mx-auto flex max-w-6xl items-center justify-between">
+    <div className="h-16 w-auto bg-white">
+      <div className="relative mx-auto flex w-full max-w-6xl items-center justify-between">
         {/* logo section */}
         <div className="flex items-center gap-8">
           <Link to="/">

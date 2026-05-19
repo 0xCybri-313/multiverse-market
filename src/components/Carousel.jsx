@@ -1,7 +1,7 @@
-import { useContext, useEffect } from "react";
-import { DataContext } from "../context/DataContext";
+import { useEffect } from "react";
 
 import React, { useRef, useState } from "react";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -10,14 +10,14 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 
-// import "../styles.css";
-
 // import required modules
 import { Pagination, Navigation } from "swiper/modules";
+import { useData } from "../context/DataContext";
+import Category from "./Category";
 
 function Carousel() {
-  const { data, setData, fetchAllProducts } = useContext(DataContext);
-  console.log(data);
+  const { data, setData, fetchAllProducts } = useData();
+  // console.log(data);
   useEffect(() => {
     fetchAllProducts();
   }, []);
@@ -26,8 +26,8 @@ function Carousel() {
     <>
       <Swiper
         slidesPerView={1}
-        spaceBetween={0}
-        loop={true}
+        spaceBetween={1}
+        loop={data?.length > 3}
         pagination={{
           clickable: true,
         }}
@@ -67,6 +67,7 @@ function Carousel() {
             </SwiperSlide>
           ))}
       </Swiper>
+      <Category />
     </>
   );
 }

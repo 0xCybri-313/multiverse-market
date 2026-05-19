@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router";
 import Navbar from "./components/Navbar";
 import axios from "axios";
+import MidBanner from "./components/midBanner";
+import Footer from "./components/Footer";
 
 function App() {
   const [location, setLocation] = useState();
@@ -16,7 +18,9 @@ function App() {
       try {
         const location = await axios.get(url);
         const exactLocation = location.data.address;
-        console.log(exactLocation);
+
+        // console.log(exactLocation);
+
         setOpenDropDown(false);
 
         setLocation(exactLocation);
@@ -38,7 +42,9 @@ function App() {
         openDropDown={openDropDown}
         setOpenDropDown={setOpenDropDown}
       />
+
       <Outlet />
+      <Footer />
     </>
   );
 }
