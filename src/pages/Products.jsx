@@ -16,7 +16,7 @@ function Products() {
         {data?.length > 0 ? (
           <div className="flex gap-8">
             <FilterSection />
-            <div className="mt-8 grid grid-cols-4 gap-8">
+            <div className="mt-8 flex flex-wrap gap-8">
               {data?.map((product, index) => (
                 <ProductCard key={index} product={product} />
               ))}
