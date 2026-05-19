@@ -61,6 +61,7 @@ const Footer = () => {
             <input
               type="email"
               placeholder="Your email address"
+              id="footer-search-input"
               className="w-full rounded-l-md bg-[#f3f4f6] p-2 text-gray-700 focus:ring-2 focus:ring-gray-500 focus:outline-none"
             />
             <button

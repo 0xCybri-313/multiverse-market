@@ -2,20 +2,7 @@ import React, { useEffect } from "react";
 import { useData } from "../context/DataContext";
 
 function Category() {
-  const { data, setData, fetchAllProducts } = useData();
-
-  const getUniqueCategories = (data, property) => {
-    let newVal = data?.map((item) => item[property]);
-
-    return [...new Set(newVal)];
-  };
-
-  const categoryOnlyData = getUniqueCategories(data, "category");
-  // console.log(categoryOnlyData);
-
-  useEffect(() => {
-    fetchAllProducts();
-  }, []);
+  const { categoryOnlyData } = useData();
 
   return (
     <div className="w-full bg-[#101829]">

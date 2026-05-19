@@ -41,7 +41,7 @@ function Navbar({ location, getLocation, openDropDown, setOpenDropDown }) {
         {/* location drop down */}
 
         {openDropDown ? (
-          <div className="absolute top-18 left-32 flex h-24 w-64 flex-col justify-around rounded-2xl border-2 border-gray-300 bg-white p-2 shadow-2xl">
+          <div className="absolute top-18 left-32 z-10 flex h-24 w-64 flex-col justify-around rounded-2xl border-2 border-gray-300 bg-white p-2 shadow-2xl">
             <div className="flex w-full items-center justify-between px-4">
               <span className="text-xl font-semibold">Change Location</span>
               <CgClose className="cursor-pointer" onClick={toggleDropDown} />
@@ -73,34 +73,7 @@ function Navbar({ location, getLocation, openDropDown, setOpenDropDown }) {
                 Home
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "border-b-4 border-b-red-500 transition-all"
-                      : "text-black"
-                  } cursor-pointer`
-                }
-              >
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  `${
-                    isActive
-                      ? "border-b-4 border-b-red-500 transition-all"
-                      : "text-black"
-                  } cursor-pointer`
-                }
-              >
-                Contact
-              </NavLink>
-            </li>
+
             <li>
               <NavLink
                 to="/products"
@@ -115,7 +88,38 @@ function Navbar({ location, getLocation, openDropDown, setOpenDropDown }) {
                 Products
               </NavLink>
             </li>
+
+            <li>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "border-b-4 border-b-red-500 transition-all"
+                      : "text-black"
+                  } cursor-pointer`
+                }
+              >
+                About
+              </NavLink>
+            </li>
+
+            <li>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `${
+                    isActive
+                      ? "border-b-4 border-b-red-500 transition-all"
+                      : "text-black"
+                  } cursor-pointer`
+                }
+              >
+                Contact
+              </NavLink>
+            </li>
           </ul>
+
           <Link
             className="relative flex items-center justify-center"
             to="/cart"
