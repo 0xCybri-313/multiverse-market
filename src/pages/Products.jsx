@@ -3,6 +3,7 @@ import { useData } from "../context/DataContext";
 import sandglass from "../assets/loading-sandglass.webm";
 import FilterSection from "../components/FilterSection";
 import ProductCard from "../components/ProductCard";
+import Pagination from "../components/Pagination";
 
 function Products() {
   const { data, setData, fetchAllProducts } = useData();
@@ -11,6 +12,8 @@ function Products() {
   const [category, setCategory] = useState("All");
   const [brand, setBrand] = useState("All");
   const [price, setPrice] = useState([0, 1000]);
+
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     fetchAllProducts();
@@ -47,28 +50,51 @@ function Products() {
     setPrice([0, 1000]);
   };
 
+  // pagination
+
+  const pageHandler = (selectedPage) => {
+    setPage(selectedPage);
+  };
+
+  const dynamicPage = Math.ceil(filteredData?.length / 9);
+
   return (
     <div className="">
       <div className="mx-auto mb-10 max-w-6xl px-4">
         {data?.length > 0 ? (
-          <div className="flex gap-8">
-            <FilterSection
-              search={search}
-              setSearch={setSearch}
-              category={category}
-              brand={brand}
-              price={price}
-              setPrice={setPrice}
-              handleCategoryChange={handleCategoryChange}
-              handleBrandChange={handleBrandChange}
-              resetFilters={resetFilters}
-            />
-            <div className="mt-8 flex flex-wrap gap-8">
-              {filteredData?.map((product, index) => (
-                <ProductCard key={index} product={product} />
-              ))}
+          <>
+            <div className="flex gap-8">
+              <FilterSection
+                search={search}
+                setSearch={setSearch}
+                category={category}
+                brand={brand}
+                price={price}
+                setPrice={setPrice}
+                handleCategoryChange={handleCategoryChange}
+                handleBrandChange={handleBrandChange}
+                resetFilters={resetFilters}
+              />
+              {filteredData?.length > 0 ? (
+                <div className="flex flex-col items-center justify-center">
+                  <div className="mt-8 flex flex-wrap gap-8">
+                    {filteredData
+                      ?.slice(page * 9 - 9, page * 9)
+                      .map((product, index) => (
+                        <ProductCard key={index} product={product} />
+                      ))}
+                  </div>
+                  <Pagination
+                    pageHandler={pageHandler}
+                    page={page}
+                    dynamicPage={dynamicPage}
+                  />
+                </div>
+              ) : (
+                <div></div>
+              )}
             </div>
-          </div>
+          </>
         ) : (
           <div className="flex h-[64vh] items-center justify-center">
             <video autoPlay loop muted>
