@@ -2,7 +2,7 @@ import React from "react";
 import { IoCartOutline } from "react-icons/io5";
 
 function ProductCard({ product }) {
-  console.log(product);
+  // console.log(product);
   return (
     <div className="relative flex h-96 w-64 cursor-pointer flex-col justify-between rounded-2xl border border-gray-100 bg-white p-4 transition-all hover:scale-105 hover:shadow-2xl">
       <img
