@@ -4,6 +4,8 @@ import sandglass from "../assets/loading-sandglass.webm";
 import FilterSection from "../components/FilterSection";
 import ProductCard from "../components/ProductCard";
 import Pagination from "../components/Pagination";
+import Lottie from "react-lottie";
+import notFound from "../assets/notFound.json";
 
 function Products() {
   const { data, setData, fetchAllProducts } = useData();
@@ -91,7 +93,9 @@ function Products() {
                   />
                 </div>
               ) : (
-                <div></div>
+                <div className="flex items-center justify-center md:h-128">
+                  <Lottie animationData={notFound} classID="w-[512px]" />
+                </div>
               )}
             </div>
           </>
